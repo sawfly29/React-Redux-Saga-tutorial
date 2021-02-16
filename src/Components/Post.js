@@ -6,7 +6,7 @@ export default ({post}) => {
   return (
     <div className="card" key={post.key}>
       <div className="card-body">
-        <div className="card-title">Post {post}</div>
+        <div className="card-title">Post {post.title}</div>
         <p className='card-text'>Text here!</p>
       </div>
     </div>

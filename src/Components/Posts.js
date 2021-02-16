@@ -5,7 +5,7 @@ import Post from "./Post";
 // eslint-disable-next-line import/no-anonymous-default-export
  const Posts = ({ syncPosts }) => {
     if (!syncPosts.length){return <h3 className='text-center'>No posts here yet!</h3>}
-  return syncPosts.map((post) => <Post post={post} key={post} />);
+  return syncPosts.map((post) => <Post post={post} key={post.id} />);
 };
 
 const mapStateToProps = state => {
