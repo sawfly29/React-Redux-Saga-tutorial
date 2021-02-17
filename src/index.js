@@ -1,12 +1,13 @@
 import React from 'react';
-import {render} from 'react-dom';
+import { render } from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {compose, createStore} from 'redux'
+import thunk from 'redux-thunk'
+import { compose, createStore, applyMiddleware } from 'redux'
 import { rootReducer } from './redux/rootReducer';
-import {Provider} from 'react-redux'
+import { Provider } from 'react-redux'
 
-const store = createStore(rootReducer, compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+const store = createStore(rootReducer,compose(applyMiddleware(thunk), compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())) )
 
 //Provider - компонент для связи реакта с редаксом, он принимает стор
 const app = (<Provider store={store}>
@@ -14,7 +15,7 @@ const app = (<Provider store={store}>
 </Provider>)
 
 render(
-   app,
+  app,
   document.getElementById('root')
 );
 

@@ -9,7 +9,7 @@ import Post from "./Post";
 };
 
 const mapStateToProps = state => {
-  console.log(state)
+
   return {
     syncPosts: state.posts.posts
   }
