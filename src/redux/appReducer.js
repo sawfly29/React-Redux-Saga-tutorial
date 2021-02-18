@@ -14,7 +14,7 @@ export const appReducer = (state = initialState, action) => {
         case HIDE_ALERT:
             return {...state, alert: null};
         case SHOW_ALERT:
-            return {...state, alert: this.state.app.alert};
+            return {...state, alert: action.payload};
         default:
             return state;
     }

@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchedPosts } from '../redux/actions'
 import { Loader } from './Loader'
+import {Alert} from './Alert'
 
 import Post from './Post'
 

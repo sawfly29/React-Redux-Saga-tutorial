@@ -15,7 +15,7 @@ import {Alert} from './Alert'
     event.preventDefault();
     
     const {title} = this.state;
-    if (!title.trim()){return this.props.showAlert && <Alert />}
+    if (!title.trim()){return this.props.alert && <Alert text = {this.props.alert}/>}
     const newPost = {title, id: Date.now().toString()}
     this.props.createPost(newPost)
     this.setState({title: ''})
@@ -33,6 +33,8 @@ import {Alert} from './Alert'
   render() {
     return (
       <form onSubmit={this.submitHandler}>
+        
+      {this.props.alert && <Alert text = {this.props.alert}/>}
         <div className="form-group">
           <label htmlFor="title">Заголовок</label>
           <input
@@ -55,4 +57,8 @@ import {Alert} from './Alert'
 const mapDispatchToProps = {
   createPost, showAlert}
 
-export default connect(null, mapDispatchToProps)(PostForm)
+  const mapStateToProps = (state) => {
+    return {alert: state.app.alert}
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostForm)

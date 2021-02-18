@@ -9,13 +9,13 @@ export function createPost(post){
 
 export function showLoader(){
     return {
-        type: SHOW_LOADER,
+        type: SHOW_LOADER
     } 
 }
 
 export function hideLoader(){
     return {
-        type: HIDE_LOADER,
+        type: HIDE_LOADER
     } 
 }
 export function showAlert(text){
@@ -27,8 +27,7 @@ export function showAlert(text){
 
 export function hideAlert(){
     return {
-        type: HIDE_ALERT,
-        payload: null
+        type: HIDE_ALERT
     } 
 }
 
