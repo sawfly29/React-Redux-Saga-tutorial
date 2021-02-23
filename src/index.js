@@ -6,8 +6,9 @@ import thunk from 'redux-thunk'
 import { compose, createStore, applyMiddleware } from 'redux'
 import { rootReducer } from './redux/rootReducer';
 import { Provider } from 'react-redux'
+import { forbiddenWordsMiddleware } from './redux/middleware';
 
-const store = createStore(rootReducer,compose(applyMiddleware(thunk), compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())) )
+const store = createStore(rootReducer,compose(applyMiddleware(thunk, forbiddenWordsMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
 //Provider - компонент для связи реакта с редаксом, он принимает стор
 const app = (<Provider store={store}>

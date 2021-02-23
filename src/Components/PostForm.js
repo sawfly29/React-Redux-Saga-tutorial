@@ -15,7 +15,7 @@ import {Alert} from './Alert'
     event.preventDefault();
     
     const {title} = this.state;
-    if (!title.trim()){return this.props.alert && <Alert text = {this.props.alert}/>}
+    if (!title.trim()){return this.props.showAlert('название поста не может быть пустым') && <Alert text = {this.props.alert}/>}
     const newPost = {title, id: Date.now().toString()}
     this.props.createPost(newPost)
     this.setState({title: ''})
@@ -36,6 +36,7 @@ import {Alert} from './Alert'
         
       {this.props.alert && <Alert text = {this.props.alert}/>}
         <div className="form-group">
+
           <label htmlFor="title">Заголовок</label>
           <input
             type="text"
@@ -57,8 +58,7 @@ import {Alert} from './Alert'
 const mapDispatchToProps = {
   createPost, showAlert}
 
-  const mapStateToProps = (state) => {
-    return {alert: state.app.alert}
-  }
+  const mapStateToProps = (state) => ({alert: state.app.alert})
+  
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostForm)
