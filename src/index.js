@@ -7,8 +7,14 @@ import { compose, createStore, applyMiddleware } from 'redux'
 import { rootReducer } from './redux/rootReducer';
 import { Provider } from 'react-redux'
 import { forbiddenWordsMiddleware } from './redux/middleware';
+import creataSagaMiddleware from 'redux-saga'
+import { sagaWatcher } from './redux/sagas';
 
-const store = createStore(rootReducer,compose(applyMiddleware(thunk, forbiddenWordsMiddleware), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+const saga = creataSagaMiddleware()
+
+const store = createStore(rootReducer,compose(applyMiddleware(thunk, forbiddenWordsMiddleware, saga), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
+
+saga.run(sagaWatcher) //позволяет саге следить и запускать watcher
 
 //Provider - компонент для связи реакта с редаксом, он принимает стор
 const app = (<Provider store={store}>
